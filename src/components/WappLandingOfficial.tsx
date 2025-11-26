@@ -767,11 +767,13 @@ const Navbar = ({
     }, 100);
   };
 
+
+
   return (
     <header
       className={`fixed top-0 w-full z-50 transition-all duration-300 ${scrolled
-          ? 'bg-white/95 backdrop-blur-md shadow-sm py-2'
-          : 'bg-transparent py-4'
+          ? 'bg-white/95 backdrop-blur-md shadow-sm pb-2'
+          : 'bg-transparent'
         }`}
     >
       <PromoBannerTop />
@@ -858,6 +860,21 @@ export default function WappLandingOfficial() {
     setView('home');
     setSelectedService(null);
   };
+
+    const stack = [
+    { name: 'Next.js', logo: '/stack/next.svg' },
+    { name: 'React', logo: '/stack/react.svg' },
+    { name: 'React Native', logo: '/stack/react-native.svg' },
+    { name: 'NestJS', logo: '/stack/nestjs.svg' },
+    { name: 'Node.js', logo: '/stack/nodejs.svg' },
+    { name: 'Firebase', logo: '/stack/firebase.svg' },
+    { name: 'Google Cloud', logo: '/stack/google-cloud.svg' },
+    { name: 'Google Gemini', logo: '/stack/gemini.svg' },
+    { name: 'TypeScript', logo: '/stack/typescript.svg' },
+    { name: 'Vercel', logo: '/stack/vercel.svg' },
+    { name: 'Apple iOS', logo: '/stack/apple.svg' },
+    { name: 'Android', logo: '/stack/android.svg' },
+  ];
 
   return (
     <div className="min-h-screen bg-white font-candara selection:bg-[#1B9FA3] selection:text-white">
@@ -1130,86 +1147,73 @@ export default function WappLandingOfficial() {
             </section>
 
             {/* TECNOLOGÍAS */}
-            <section
-              id="tecnologias"
-              className="py-20 bg-slate-50 border-y border-slate-200"
-            >
-              <div className="container mx-auto text-center">
-                <h2 className="text-2xl font-bold mb-12 font-harabara text-[#0B2C3C]">
-                  Stack Tecnológico
-                </h2>
+          <section
+      id="tecnologias"
+      className="py-20 bg-[#0B2C3C] overflow-hidden relative"
+    >
+      {/* Estilos para la animación inline para no tocar config de tailwind */}
+      <style jsx>{`
+        @keyframes scrollRight {
+          0% {
+            transform: translateX(-50%);
+          }
+          100% {
+            transform: translateX(0);
+          }
+        }
+        .animate-scroll-right {
+          animation: scrollRight 30s linear infinite;
+        }
+        /* Pausar animación al pasar el mouse (opcional) */
+        .group:hover .animate-scroll-right {
+          animation-play-state: paused;
+        }
+      `}</style>
 
-                <div className="grid grid-cols-2 md:grid-cols-4 gap-6 max-w-4xl mx-auto">
-                  {[
-                    {
-                      name: 'Next.js',
-                      logo: '/stack/next.svg',
-                    },
-                    {
-                      name: 'React',
-                      logo: '/stack/react.svg',
-                    },
-                    {
-                      name: 'React Native',
-                      logo: '/stack/react-native.svg', // podés usar el mismo que React si querés
-                    },
-                    {
-                      name: 'NestJS',
-                      logo: '/stack/nestjs.svg',
-                    },
-                    {
-                      name: 'Node.js',
-                      logo: '/stack/nodejs.svg',
-                    },
-                    {
-                      name: 'Firebase',
-                      logo: '/stack/firebase.svg',
-                    },
-                    {
-                      name: 'Google Cloud',
-                      logo: '/stack/google-cloud.svg',
-                    },
-                    {
-                      name: 'Google Gemini',
-                      logo: '/stack/gemini.svg',
-                    },
-                    {
-                      name: 'TypeScript',
-                      logo: '/stack/typescript.svg',
-                    },
-                    {
-                      name: 'Vercel',
-                      logo: '/stack/vercel.svg',
-                    },
-                    {
-                      name: 'Apple iOS',
-                      logo: '/stack/apple.svg',
-                    },
-                    {
-                      name: 'Android',
-                      logo: '/stack/android.svg',
-                    }
-                  ].map((tech) => (
-                    <div
-                      key={tech.name}
-                      className="bg-white rounded-xl p-4 shadow-sm border border-slate-100 flex flex-col items-center justify-center gap-3 hover:shadow-md hover:-translate-y-1 transition-all duration-200"
-                    >
-                      <div className="relative w-12 h-12">
-                        <Image
-                          src={tech.logo}
-                          alt={tech.name}
-                          fill
-                          className="object-contain"
-                        />
-                      </div>
-                      <span className="font-semibold text-sm text-slate-700">
-                        {tech.name}
-                      </span>
-                    </div>
-                  ))}
-                </div>
+      <div className="container mx-auto text-center px-4 mb-12">
+        <h2 className="text-3xl font-bold font-harabara text-white">
+          Stack Tecnológico
+        </h2>
+        <p className="text-slate-300 mt-4 max-w-2xl mx-auto">
+          Herramientas modernas para soluciones escalables.
+        </p>
+      </div>
+
+      {/* Contenedor del Slider con Máscara de desvanecimiento */}
+      <div 
+        className="group relative flex w-full overflow-hidden"
+        style={{
+            maskImage: 'linear-gradient(to right, transparent, black 10%, black 90%, transparent)',
+            WebkitMaskImage: 'linear-gradient(to right, transparent, black 10%, black 90%, transparent)'
+        }}
+      >
+        {/* Track animado (Duplicamos la lista para efecto infinito) */}
+        <div className="flex animate-scroll-right gap-12 w-max px-6">
+          
+          {/* Renderizamos la lista dos veces para el loop perfecto */}
+          {[...stack, ...stack].map((tech, index) => (
+            <div
+              key={`${tech.name}-${index}`}
+              className="flex flex-col items-center justify-center gap-3 min-w-[100px] transition-opacity duration-300 hover:opacity-100 opacity-70"
+            >
+              <div className="relative w-16 h-16 transition-transform duration-300 hover:scale-110">
+                <Image
+                  src={tech.logo}
+                  alt={tech.name}
+                  fill
+                  className="object-contain filter drop-shadow-lg"
+                  // Si tus logos son negros (ej: next.js/vercel), descomenta la siguiente línea para invertirlos a blanco:
+                  // className="object-contain filter invert brightness-0" 
+                />
               </div>
-            </section>
+              <span className="font-medium text-sm text-slate-200">
+                {tech.name}
+              </span>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
 
 
             {/* PROCESO */}
