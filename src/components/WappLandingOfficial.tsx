@@ -990,10 +990,18 @@ export default function WappLandingOfficial() {
                   >
                     <div className="relative rounded-2xl shadow-2xl overflow-hidden border border-slate-100 bg-white min-h-[400px] flex items-center justify-center p-8">
                       <div className="absolute inset-0 bg-[size:40px_40px] opacity-10 bg-[linear-gradient(#0B2C3C_1px,transparent_1px),linear-gradient(90deg,#0B2C3C_1px,transparent_1px)]" />
-                      <Code2
+                      {/* <Code2
                         size={64}
                         className="text-[#1B9FA3] animate-pulse"
+                      /> */}
+                      <Image
+                        src="/wapp/l.png"
+                        alt="Hero Image"
+                        width={500}
+                        height={400}
+                        className="object-contain"
                       />
+
                     </div>
                   </motion.div>
                 </div>
