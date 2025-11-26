@@ -749,10 +749,11 @@ const NAV_ITEMS = [
 const Navbar = ({
   onViewChange,
 }: {
-  onViewChange: React.Dispatch<React.SetStateAction<ViewType>>;
+  onViewChange: React.Dispatch<React.SetStateAction<any>>; // Ajustá el tipo ViewType si lo tenés importado
 }) => {
   const [isOpen, setIsOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+
   useEffect(() => {
     const handleScroll = () => setScrolled(window.scrollY > 20);
     window.addEventListener('scroll', handleScroll);
@@ -767,14 +768,13 @@ const Navbar = ({
     }, 100);
   };
 
-
-
   return (
     <header
-      className={`fixed top-0 w-full z-50 transition-all duration-300 ${scrolled
+      className={`fixed top-0 w-full z-50 transition-all duration-300 ${
+        scrolled
           ? 'bg-white/95 backdrop-blur-md shadow-sm pb-2'
           : 'bg-transparent'
-        }`}
+      }`}
     >
       <PromoBannerTop />
 
@@ -783,7 +783,15 @@ const Navbar = ({
           onClick={() => handleNav('#inicio')}
           className="hover:opacity-80 transition-opacity"
         >
-          <WappLogo className="h-10 md:h-12" />
+          {/* AQUÍ ESTÁ EL CAMBIO PARA USAR logo.png */}
+          <Image
+            src="/wapp/logo-ok.svg"
+            alt="Logo"
+            width={180} // Ancho base para mantener calidad (ajustalo según el ratio de tu imagen)
+            height={60} // Alto base
+            className="h-10 md:h-12 w-auto object-contain" // w-auto mantiene la proporción
+            priority // Carga prioritaria al ser el logo del navbar
+          />
         </button>
 
         <nav className="hidden lg:flex items-center gap-8">
