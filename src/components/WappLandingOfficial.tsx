@@ -877,7 +877,7 @@ export default function WappLandingOfficial() {
     { name: 'Node.js', logo: '/stack/nodejs.svg' },
     { name: 'Firebase', logo: '/stack/firebase.svg' },
     { name: 'Google Cloud', logo: '/stack/google-cloud.svg' },
-    { name: 'Google Gemini', logo: '/stack/gemini.svg' },
+    { name: 'Google Gemini', logo: '/stack/gemini.png' },
     { name: 'TypeScript', logo: '/stack/typescript.svg' },
     { name: 'Vercel', logo: '/stack/vercel.svg' },
     { name: 'React Native', logo: '/stack/react.svg' },
