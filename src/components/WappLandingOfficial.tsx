@@ -28,6 +28,8 @@ import {
   MessageSquare,
 } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
+import Image from 'next/image';
+
 
 // --- UTILIDADES Y CONSTANTES DE MARCA ---
 
@@ -243,10 +245,10 @@ const Button = ({
     variant === 'primary'
       ? { backgroundColor: BRAND.colors.teal }
       : variant === 'secondary'
-      ? { backgroundColor: BRAND.colors.navy }
-      : variant === 'outline'
-      ? { borderColor: BRAND.colors.navy, color: BRAND.colors.navy }
-      : {};
+        ? { backgroundColor: BRAND.colors.navy }
+        : variant === 'outline'
+          ? { borderColor: BRAND.colors.navy, color: BRAND.colors.navy }
+          : {};
 
   return (
     <button
@@ -270,9 +272,8 @@ const Card = ({
 }) => (
   <div
     onClick={onClick}
-    className={`rounded-xl border border-slate-100 bg-white shadow-sm hover:shadow-md transition-all duration-300 ${className} ${
-      onClick ? 'cursor-pointer hover:border-[#1B9FA3] hover:-translate-y-1' : ''
-    }`}
+    className={`rounded-xl border border-slate-100 bg-white shadow-sm hover:shadow-md transition-all duration-300 ${className} ${onClick ? 'cursor-pointer hover:border-[#1B9FA3] hover:-translate-y-1' : ''
+      }`}
   >
     {children}
   </div>
@@ -312,9 +313,8 @@ const SectionTitle = ({
     </h2>
     {subtitle && (
       <p
-        className={`text-lg text-slate-600 max-w-2xl ${
-          centered ? 'mx-auto' : ''
-        } font-candara`}
+        className={`text-lg text-slate-600 max-w-2xl ${centered ? 'mx-auto' : ''
+          } font-candara`}
       >
         {subtitle}
       </p>
@@ -737,8 +737,6 @@ const ServiceDetailView = ({
   );
 };
 
-// --- SECCIONES PRINCIPALES ---
-
 const NAV_ITEMS = [
   { label: 'Inicio', href: '#inicio' },
   { label: 'Servicios', href: '#servicios' },
@@ -771,11 +769,10 @@ const Navbar = ({
 
   return (
     <header
-      className={`fixed top-0 w-full z-50 transition-all duration-300 ${
-        scrolled
+      className={`fixed top-0 w-full z-50 transition-all duration-300 ${scrolled
           ? 'bg-white/95 backdrop-blur-md shadow-sm py-2'
           : 'bg-transparent py-4'
-      }`}
+        }`}
     >
       <PromoBannerTop />
 
@@ -1066,13 +1063,24 @@ export default function WappLandingOfficial() {
                 <h3 className="text-2xl font-bold mb-2 font-harabara text-white">
                   Confían en WAPP
                 </h3>
+
                 <div className="flex flex-wrap justify-center items-center gap-12 md:gap-20 mt-12">
-                  {['Hogar', 'Denver', 'Costos'].map((c, i) => (
+                  {[
+                    { name: 'Hogar', src: '/clientes/hogar.png' },
+                    { name: 'Denver', src: '/clientes/denver.png' },
+                    { name: 'Costos', src: '/clientes/costos.png' },
+                  ].map((cliente, i) => (
                     <div
                       key={i}
-                      className="text-3xl font-bold text-white opacity-50 font-harabara"
+                      className="opacity-80 hover:opacity-100 transition-opacity"
                     >
-                      {c}
+                      <Image
+                        src={cliente.src}
+                        alt={cliente.name}
+                        width={180}
+                        height={80}
+                        className="object-contain max-h-16 w-auto"
+                      />
                     </div>
                   ))}
                 </div>
@@ -1130,27 +1138,79 @@ export default function WappLandingOfficial() {
                 <h2 className="text-2xl font-bold mb-12 font-harabara text-[#0B2C3C]">
                   Stack Tecnológico
                 </h2>
+
                 <div className="grid grid-cols-2 md:grid-cols-4 gap-6 max-w-4xl mx-auto">
                   {[
-                    'Next.js',
-                    'React Native',
-                    'NestJS',
-                    'Node.js',
-                    'Firebase',
-                    'Google Cloud',
-                    'TypeScript',
-                    'Tailwind',
-                  ].map((t, i) => (
+                    {
+                      name: 'Next.js',
+                      logo: '/stack/next.svg',
+                    },
+                    {
+                      name: 'React',
+                      logo: '/stack/react.svg',
+                    },
+                    {
+                      name: 'React Native',
+                      logo: '/stack/react-native.svg', // podés usar el mismo que React si querés
+                    },
+                    {
+                      name: 'NestJS',
+                      logo: '/stack/nestjs.svg',
+                    },
+                    {
+                      name: 'Node.js',
+                      logo: '/stack/nodejs.svg',
+                    },
+                    {
+                      name: 'Firebase',
+                      logo: '/stack/firebase.svg',
+                    },
+                    {
+                      name: 'Google Cloud',
+                      logo: '/stack/google-cloud.svg',
+                    },
+                    {
+                      name: 'Google Gemini',
+                      logo: '/stack/gemini.svg',
+                    },
+                    {
+                      name: 'TypeScript',
+                      logo: '/stack/typescript.svg',
+                    },
+                    {
+                      name: 'Vercel',
+                      logo: '/stack/vercel.svg',
+                    },
+                    {
+                      name: 'Apple iOS',
+                      logo: '/stack/apple.svg',
+                    },
+                    {
+                      name: 'Android',
+                      logo: '/stack/android.svg',
+                    }
+                  ].map((tech) => (
                     <div
-                      key={i}
-                      className="bg-white rounded-lg p-4 shadow-sm border border-slate-100 font-semibold text-slate-700"
+                      key={tech.name}
+                      className="bg-white rounded-xl p-4 shadow-sm border border-slate-100 flex flex-col items-center justify-center gap-3 hover:shadow-md hover:-translate-y-1 transition-all duration-200"
                     >
-                      {t}
+                      <div className="relative w-12 h-12">
+                        <Image
+                          src={tech.logo}
+                          alt={tech.name}
+                          fill
+                          className="object-contain"
+                        />
+                      </div>
+                      <span className="font-semibold text-sm text-slate-700">
+                        {tech.name}
+                      </span>
                     </div>
                   ))}
                 </div>
               </div>
             </section>
+
 
             {/* PROCESO */}
             <section id="proceso" className="py-24 bg-white">
