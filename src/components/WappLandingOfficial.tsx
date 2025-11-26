@@ -872,7 +872,7 @@ export default function WappLandingOfficial() {
     const stack = [
     { name: 'Next.js', logo: '/stack/next.svg' },
     { name: 'React', logo: '/stack/react.svg' },
-    { name: 'React Native', logo: '/stack/react-native.svg' },
+    
     { name: 'NestJS', logo: '/stack/nestjs.svg' },
     { name: 'Node.js', logo: '/stack/nodejs.svg' },
     { name: 'Firebase', logo: '/stack/firebase.svg' },
@@ -880,6 +880,7 @@ export default function WappLandingOfficial() {
     { name: 'Google Gemini', logo: '/stack/gemini.svg' },
     { name: 'TypeScript', logo: '/stack/typescript.svg' },
     { name: 'Vercel', logo: '/stack/vercel.svg' },
+    { name: 'React Native', logo: '/stack/react.svg' },
     { name: 'Apple iOS', logo: '/stack/apple.svg' },
     { name: 'Android', logo: '/stack/android.svg' },
   ];
