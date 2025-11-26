@@ -559,7 +559,7 @@ const AIModal = ({
                       Tu idea:
                     </p>
                     <p className="text-slate-700 font-medium line-clamp-2">
-                      "{idea}"
+                      “{idea}”
                     </p>
                   </div>
 
@@ -568,7 +568,7 @@ const AIModal = ({
                       Veredicto Profesional
                     </span>
                     <p className="text-[#0B2C3C] font-medium text-lg border-l-4 border-[#1B9FA3] pl-4 py-1">
-                      "{analysis.verdict}"
+                      “{analysis.verdict}”
                     </p>
                   </div>
 
@@ -686,7 +686,7 @@ const ServiceDetailView = ({
               <h3 className="font-bold text-[#0B2C3C] mb-2 flex items-center gap-2">
                 <Sparkles size={18} className="text-[#1B9FA3]" /> Impacto Real
               </h3>
-              <p className="text-slate-700 italic">"{service.example}"</p>
+              <p className="text-slate-700 italic">“{service.example}”</p>
             </div>
             <div className="grid sm:grid-cols-2 gap-4">
               {service.features.map((feat, i) => (
